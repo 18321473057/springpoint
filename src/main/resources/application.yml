@@ -1,0 +1,6 @@
+server:
+  port: 80 #服务端口
+
+spring:
+  application:
+    name: springpoint #指定服务名
