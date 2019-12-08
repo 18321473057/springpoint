@@ -9,7 +9,7 @@ public class MVCTestController {
 
     @RequestMapping("/get")
     public String get() {
-        return "星期日";
+        return "今天星期日";
     }
 
 }
