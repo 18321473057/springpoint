@@ -38,7 +38,7 @@ public class Bean1 implements InitializingBean ,BeanPostProcessor ,DisposableBea
 
     @Override
     public Object postProcessAfterInitialization(Object o, String s) throws BeansException {
-        System.out.println("beanPostProcessor.postprocessAfterInitialization-- 后处理bean后置方法");
+        System.out.println("beanPostProcessor.postprocessAfterInitialization-- 后处理bean--后置方法");
         return o;
     }
 
@@ -54,6 +54,6 @@ public class Bean1 implements InitializingBean ,BeanPostProcessor ,DisposableBea
     }
 
     public void destroyMethod(){
-        System.out.println("@bean.destroyMethod . bean的销毁方法");
+        System.out.println("@Bean.destroyMethod . bean的销毁方法");
     }
 }

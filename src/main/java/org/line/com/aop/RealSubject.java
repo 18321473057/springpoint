@@ -1,4 +1,6 @@
-package org.line.com.aop.jdkproxy;
+package org.line.com.aop;
+
+import org.line.com.aop.jdkproxy.Subject;
 
 /**
  * @Author: yangcs
@@ -11,4 +13,7 @@ public class RealSubject implements Subject {
     public void speak() {
         System.out.println("subject 实际运行代码");
     }
+
+
+
 }

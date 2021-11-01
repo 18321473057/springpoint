@@ -12,8 +12,8 @@ public class Configuration {
     }
 
 
-    @Bean
-    public BranPostProcessTest1 branPostProcessTest1() {
-        return new BranPostProcessTest1();
-    }
+//    @Bean
+//    public BranPostProcessTest1 branPostProcessTest1() {
+//        return new BranPostProcessTest1();
+//    }
 }
