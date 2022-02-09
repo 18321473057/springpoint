@@ -1,0 +1,39 @@
+#!/bin/bash
+source /etc/profile
+timestamp=$(date +%Y%m%d%H%M)
+project="portal"
+context="/u01/app/portal"
+tomcat="/u01/app/portal/tomcat8.5"
+
+cd $context/war
+#package check
+if [ ! -f "$project-latest.war" ]; then
+    echo "=== error: $project-latest.war not exists! ==="
+    exit 2
+fi
+
+#do bakup
+if [ -f "$project.war" ]; then
+   echo "=== backup $project.war ==="
+   mv $project.war $project.war.$timestamp-jenkins
+fi
+
+#rename package
+mv $project-latest.war $project.war
+
+#stop application
+pid=`ps -ef|grep -w "$tomcat" | grep -v "grep"|awk '{print $2}'`
+if [ "$pid" == "" ];then
+    echo "=== process not exists or stop success ==="
+else
+    echo "=== kill process pid : $pid ==="
+     kill -9 $pid
+fi
+
+#delete ROOT
+cd $tomcat/webapps
+rm -rf ROOT
+
+#start application
+cd $context
+sh startup.sh
