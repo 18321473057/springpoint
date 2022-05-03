@@ -1,0 +1,38 @@
+//版本
+syntax = "proto3";
+//加快解析
+option  optimize_for = SPEED;
+//指定生产在那个包下
+option java_package = "netty.protobuf";
+//外部类名, 也就是文件名
+option java_outer_classname = "MyFruitsOut";
+
+message MyDataType{
+
+  enum DataType{
+    AppleType = 0;
+    OrangeTyoe = 1;
+  }
+  //标识传递的是哪一个类型
+  DataType data_type = 1;
+
+  //标识每次枚举类型最多只能传递一种 , 节省空间
+  //就是说oneof 中只选择一个传递
+  oneof dataBody{
+      Apple apple = 2;
+      Orange orange = 3;
+  }
+
+}
+
+
+
+message Apple{// 会在MsgOut 内部生成一个msg 内部类; 也就是正真发送的数据
+  int32 id = 1;  // 生成int id 属性; 1 为属性的序号
+  string orderCode = 2;
+}
+
+message Orange{
+  string sku = 1;
+  int32 price = 2;
+}
